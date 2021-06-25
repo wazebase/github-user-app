@@ -1,0 +1,15 @@
+.org {
+    display:inline-flex;
+    align-items:center;
+    width:90%;
+    border-bottom: 1px solid grey;
+    img {
+        width:30px;
+        height: 30px;
+        margin-right: 10px;
+    }
+    a {
+        color:blue;
+        align-self: end;
+    }
+}

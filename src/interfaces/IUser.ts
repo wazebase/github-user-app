@@ -20,4 +20,6 @@ export interface IUser {
     firstThreeRepos: any[];
 
     orgs: any[];
+
+    fromSearch?: boolean;
 }

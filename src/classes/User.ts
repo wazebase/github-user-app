@@ -23,6 +23,8 @@ export class User implements IUser {
 
   firstThreeRepos:[];
 
+  fromSearch?:boolean;
+
   constructor(name:string, login:string, type:string, orgUrl:string, followers:number,
     avatarUrl:string, publicRepos:number, reposUrl:string, id:number) {
     this.type = type;
@@ -36,5 +38,6 @@ export class User implements IUser {
     this.orgs = [];
     this.name = name;
     this.login = login;
+    this.fromSearch = false;
   }
 }

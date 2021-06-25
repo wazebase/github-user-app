@@ -21,15 +21,9 @@ const repoService = () => {
     }
   };
 
-  const noRepos = (user:IUser) => {
-    user.firstThreeRepos.push('No repos available');
-  };
-
   const setReposForUser = async (user:IUser) => {
     if (!checkIfNoRepos(user)) {
       await getReposData(user);
-    } else {
-      noRepos(user);
     }
   };
 

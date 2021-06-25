@@ -1,3 +1,4 @@
+/* eslint-disable react/button-has-type */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import React from 'react';
@@ -8,7 +9,7 @@ interface ISearchLink {
 }
 
 const SearchLink = ({ userlogin }:ISearchLink) => (
-  <p><Link to={`/${userlogin}`}>{userlogin}</Link></p>
+  <button className="search-link animate-button"><Link to={`/${userlogin}`}>{userlogin}</Link></button>
 );
 
 export default SearchLink;

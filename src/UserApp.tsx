@@ -7,8 +7,10 @@ import LandingPage from './pages/LandingPage/LandingPage';
 import UserPage from './pages/UserPage/UserPage';
 import NotFound from './pages/NotFound/NotFound';
 
+import './user-app.scss';
+
 const UserApp = () => (
-  <div className="user-app">
+  <div className="app">
     <Router>
       <Header />
       <Switch>

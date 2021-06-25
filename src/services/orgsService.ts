@@ -11,8 +11,6 @@ const orgsService = () => {
         const newOrg = new Organisation(org.login, org.avatar_url);
         user.orgs.push(newOrg);
       });
-    } else {
-      user.orgs.push('No organisations available');
     }
   };
 

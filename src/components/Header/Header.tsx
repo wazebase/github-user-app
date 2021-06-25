@@ -1,10 +1,9 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 const Header = () => (
   <div>
-    <Link to="/">Helmes</Link>
+    <h1>Helmes</h1>
   </div>
 );
 
