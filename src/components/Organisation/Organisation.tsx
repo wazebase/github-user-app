@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import React from 'react';
@@ -5,7 +7,7 @@ import './organisation.scss';
 
 interface IOrganisation {
     login:string;
-    avatar:string
+    avatar:string;
 }
 function Organisation({ login, avatar }:IOrganisation) {
   return (

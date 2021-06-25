@@ -33,7 +33,7 @@ const GithubUser = (
     <div className="repos">
       <h3>User repos</h3>
       {firstThreeRepos.length > 0
-        ? firstThreeRepos.map((repo) => <Repo name={repo.name} url={repo.url} />)
+        ? firstThreeRepos.map((repo) => <Repo name={repo.name} url={repo.url} key={repo.id} />)
         : (<p>No repos to display</p>)}
     </div>
 
@@ -49,7 +49,7 @@ const GithubUser = (
         ? (
           <>
             <h3>User organisations</h3>
-            {orgs.map((org) => <Organisation login={org.login} avatar={org.avatar} />)}
+            {orgs.map((org) => <Organisation login={org.login} avatar={org.avatar} key={org.id} />)}
           </>
         )
         : (<></>)}

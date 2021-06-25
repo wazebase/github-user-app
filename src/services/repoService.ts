@@ -13,9 +13,11 @@ const repoService = () => {
       for (let i = 0; i < 3 && i < repoData.length; i += 1) {
         const repoName = repoData[i].name;
         const repoUrl = repoData[i].html_url;
+        const { id } = repoData[i];
         user.firstThreeRepos.push({
           name: repoName,
           url: repoUrl,
+          id,
         });
       }
     }

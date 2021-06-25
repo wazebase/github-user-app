@@ -1,17 +1,16 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import { Token } from '../api/config';
+import { TOKEN } from '../api/config';
 import userService from './userService';
 import repoService from './repoService';
 
 const dataService = () => {
   const fetchData = async (link:string) => {
-    const newToken = new Token();
     let data:any;
     let error = '';
     try {
       const req = await fetch(link, {
         headers: {
-          Authorization: `bearer ${newToken.getToken()}`,
+          Authorization: `bearer ${TOKEN}`,
         },
       });
       data = await req.json();
