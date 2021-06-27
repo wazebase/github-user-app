@@ -13,6 +13,9 @@ This is an application that displays and searches [GitHub](https://github.com/) 
 * SCSS
 * Typescript
 * Github API
+* Eslint
+* Enzyme
+* Jest
 * NPM
 
 ## Setup 
@@ -34,6 +37,14 @@ export const TOKEN = 'paste it here';
 After that, you are ready to go! Run following command: 
 
 $ npm start
+
+You can also run this command to check testsL
+
+$ npm run test
+
+You can run this command to check if code follows eslint enforced style:
+
+$npm run lint
 
 ## Extras
 * I've specified the amount of users displayed on the Landing page. You can change it (up to 30) by changing the value of userAmount (LandingPage, line 25).
