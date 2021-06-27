@@ -58,7 +58,7 @@ const UserPage = () => {
   return (
     <div className="user-page">
       <BackButton />
-      {error ? (<>{error}</>) : (<></>)}
+      {error ? (<p>{error}</p>) : (<></>)}
       {currentUser ? (
         <>
           <h1>{currentUser.login}</h1>

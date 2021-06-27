@@ -5,6 +5,7 @@
     },
     "extends": [
         "plugin:react/recommended",
+        "plugin:jest/recommended",
         "plugin:@typescript-eslint/recommended",
         "airbnb"
     ],
@@ -19,9 +20,15 @@
     "plugins": [
         "react",
         "react-hooks",
-        "@typescript-eslint"
+        "@typescript-eslint",
+        "jest"
     ],
     "rules": {
+        "jest/no-disabled-tests": "warn",
+        "jest/no-focused-tests": "error",
+        "jest/no-identical-title": "error",
+        "jest/prefer-to-have-length": "warn",
+        "jest/valid-expect": "error",
         "import/prefer-default-export": "off",
         "react/prop-types": "off",
         "no-use-before-define": "off",

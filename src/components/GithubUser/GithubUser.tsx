@@ -30,15 +30,15 @@ const GithubUser = (
       <h3>User repos</h3>
       {firstThreeRepos[0]
         ? firstThreeRepos.map((repo) => <Repo name={repo.name} url={repo.url} key={repo.id} />)
-        : (<p>No repos to display</p>)}
+        : (<p id="repo-info">No repos to display</p>)}
     </div>
 
     <div className="orgs">
       {fromSearch && !orgs[0]
         ? (
           <>
-            <h3>User organisations</h3>
-            <p> No organisations available</p>
+            <h3 id="orgs-heading">User organisations</h3>
+            <p id="org-info">No organisations available</p>
           </>
         ) : (<></>)}
       {orgs[0] && fromSearch

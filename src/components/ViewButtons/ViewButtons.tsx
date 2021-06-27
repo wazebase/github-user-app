@@ -5,7 +5,7 @@ import listView from '../../icons/list_view.svg';
 function ViewButtons() {
   const view = document.getElementById('view');
   const users = document.getElementsByClassName('user');
-  const [clientWidth, setClientWidth] = useState(0);
+  const [clientWidth, setClientWidth] = useState(1000);
 
   useEffect(() => {
     setClientWidth(document.documentElement.clientWidth);
