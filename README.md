@@ -1,46 +1,42 @@
-# Getting Started with Create React App
+## Table of contents
+* [General info](#general-info)
+* [Tech Stack](#features)
+* [Setup](#setup)
+* [Usage](#usage)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## General info
+This is an application that displays and searches [GitHub](https://github.com/) users using GitHub public API. It has 2 views - Landing Page and User Page, where the first one represents the list of the most popular Github users and the second one shows the data for specific users. The data is being stored inside of local storage. Succeeded searches are also visible on the landing page (uo to 3). You can change the view of the list on the Landing Page with 2 buttons on the right. App is mobile responsive. 
 
-## Available Scripts
+## Tech Stack
+* React
+* React Router
+* SCSS
+* Typescript
+* Github API
+* NPM
 
-In the project directory, you can run:
+## Setup 
 
-### `npm start`
+To run this project, install it locally using git clone command.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+After that, go to the root directory and write in your terminal:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+$ npm install
 
-### `npm test`
+Before you continiue, you will need to get your personal access token to use this app. Follow these instructions:
+* Go to your Github Page. Go to Settings -> Developer Settings -> Personal Acess Tokens.
+* Click Generate new token. This will open the selection list for you: you will only need public_repos and read:user to run this app. Find them and select. 
+* Finish gererating your token and copy it. Then, go to src/api/config.ts. Paste that to representing variable.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```javascript
+export const TOKEN = 'paste it here';
+```
+After that, you are ready to go! Run following command: 
 
-### `npm run build`
+$ npm start
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Extras
+* I've specified the amount of users displayed on the Landing page. You can change it (up to 30) by changing the value of userAmount (LandingPage, line 25).
+* The Landing Page is listening to screen changes. It will remove the buttons for the view change after 600px, but please reload the page to see the changes if you want to look at the mobile version. 
+* The cool thing about this app is that it saves data to Local Storage and makes API calls only when they are necesarry. It makes a big API call when you open the landing page or specific user page for the first time. Then it saves data and calls it directly from the local storage.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
