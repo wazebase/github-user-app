@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { IUser } from '../interfaces/IUser';
 
 const lsService = () => {
@@ -38,17 +37,6 @@ const lsService = () => {
     };
   };
 
-  const changeUserOrgsInList = (user:IUser) => {
-    const list = getListFromLs('userlist');
-    for (let i = 0; i < list.length; i += 1) {
-      if (list[i].login === user.login) {
-        list[i].orgs = user.orgs;
-        break;
-      }
-    }
-    saveToLs(list);
-  };
-
   const addItemToLsList = (list:'userlist'|'searchlist', item:IUser|string) => {
     const lsList = getListFromLs(list);
     lsList.push(item);
@@ -76,7 +64,6 @@ const lsService = () => {
     getListFromLs,
     getUserFromLs,
     addItemToLsList,
-    changeUserOrgsInList,
     saveToSearchlist,
   };
 };

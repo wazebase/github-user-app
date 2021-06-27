@@ -1,14 +1,17 @@
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
-/* eslint-disable no-param-reassign */
 import dataService from './dataService';
 import { IUser } from '../interfaces/IUser';
 
 const repoService = () => {
   const checkIfNoRepos = (user:IUser) => user.publicRepos === 0;
 
+  const noRepos = (user:IUser) => {
+    user.firstThreeRepos.push(false);
+  };
+
   const getReposData = async (user:IUser) => {
     const repoDataObj = await dataService.fetchData(user.reposUrl);
-    if (!repoDataObj.error) {
+    const error = repoDataObj.error || repoDataObj.data.message;
+    if (!error) {
       const repoData = repoDataObj.data;
       for (let i = 0; i < 3 && i < repoData.length; i += 1) {
         const repoName = repoData[i].name;
@@ -20,12 +23,16 @@ const repoService = () => {
           id,
         });
       }
+    } else {
+      noRepos(user);
     }
   };
 
   const setReposForUser = async (user:IUser) => {
     if (!checkIfNoRepos(user)) {
       await getReposData(user);
+    } else {
+      noRepos(user);
     }
   };
 

@@ -1,7 +1,7 @@
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { TOKEN } from '../api/config';
 import userService from './userService';
 import repoService from './repoService';
+import orgsService from './orgsService';
 
 const dataService = () => {
   const fetchData = async (link:string) => {
@@ -25,9 +25,11 @@ const dataService = () => {
 
   const getUserData = async (userUrl:string) => {
     const userObj = await fetchData(userUrl);
-    if (!userObj.error) {
+    const error = userObj.error || userObj.data.message;
+    if (!error) {
       const newUser = userService.createUser(userObj.data);
       await repoService.getReposData(newUser);
+      await orgsService.getOrgs(newUser);
       userService.addUser(newUser);
     }
   };

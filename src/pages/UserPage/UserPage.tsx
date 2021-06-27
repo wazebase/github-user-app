@@ -1,31 +1,31 @@
-/* eslint-disable react/button-has-type */
-/* eslint-disable @typescript-eslint/no-shadow */
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React, { useEffect, useState } from 'react';
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+
 import lsService from '../../services/lsService';
 import dataService from '../../services/dataService';
 import userService from '../../services/userService';
 import repoService from '../../services/repoService';
 import orgService from '../../services/orgsService';
+
 import { API_URL } from '../../api/config';
 import { IUser } from '../../interfaces/IUser';
-import { User } from '../../classes/User';
+
 import GithubUser from '../../components/GithubUser/GithubUser';
+import BackButton from '../../components/BackButton/BackButton';
 
 import './user-page.scss';
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+
 const UserPage = () => {
-  const params = useParams();
-  const { userlogin } : any = params;
-  const [currentUser, setCurrentUser] = useState<IUser>(new User('', '', '', '', 0, '', 0, '', 0));
+  const { userlogin } : {userlogin: string} = useParams();
+  const [currentUser, setCurrentUser] = useState<IUser>();
   const [error, setError] = useState('');
-  const history = useHistory();
   const users = document.getElementsByClassName('user');
 
   const getCurrentUserFromFetch = async (userLogin:string) => {
     const userDataObj = await dataService.fetchData(`${API_URL}/${userLogin}`);
-    if (!userDataObj.data.message) {
+    const fetchError = userDataObj.error || userDataObj.data.message;
+
+    if (!fetchError) {
       const newUser = userService.createUser(userDataObj.data);
       await repoService.setReposForUser(newUser);
       await orgService.getOrgs(newUser);
@@ -37,21 +37,14 @@ const UserPage = () => {
     }
   };
 
-  const getCurrentUserFromLs = async (user:IUser) => {
-    if (user.orgs.length === 0) {
-      await orgService.getOrgs(user);
-      lsService.changeUserOrgsInList(user);
-    }
-    setCurrentUser(user);
-  };
-
   useEffect(() => {
     const userlistFromLs = lsService.getListFromLs('userlist');
     const { user, userExists } = lsService.getUserFromLs(userlistFromLs, userlogin);
+
     if (!userExists) {
       getCurrentUserFromFetch(userlogin);
     } else {
-      getCurrentUserFromLs(user);
+      setCurrentUser(user);
     }
   }, []);
 
@@ -63,15 +56,11 @@ const UserPage = () => {
     }
   }, [currentUser]);
 
-  const handleClick = () => {
-    history.push('/');
-  };
-
   return (
     <div className="user-page">
+      <BackButton />
       {error ? (<>{error}</>) : (<></>)}
-      <button className="back-button animate-button" onClick={handleClick}>Back</button>
-      {currentUser.login ? (
+      {currentUser ? (
         <>
           <h1>{currentUser.login}</h1>
           <GithubUser

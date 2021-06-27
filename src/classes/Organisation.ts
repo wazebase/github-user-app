@@ -1,4 +1,6 @@
-export class Organisation {
+import { IOrganisation } from '../interfaces/IOrganisation';
+
+export class Organisation implements IOrganisation {
     login:string
 
     avatar: string

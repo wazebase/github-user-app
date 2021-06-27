@@ -1,12 +1,7 @@
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import React from 'react';
+import { IRepo } from '../../interfaces/IRepo';
 import './repo.scss';
 
-interface IRepo {
-    url:string;
-    name: string;
-}
 function Repo({ url, name }:IRepo) {
   return (
     <div>

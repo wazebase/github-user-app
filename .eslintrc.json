@@ -25,6 +25,8 @@
         "import/prefer-default-export": "off",
         "react/prop-types": "off",
         "no-use-before-define": "off",
+        "no-alert":"off",
+        "@typescript-eslint/no-explicit-any": "off",
         "@typescript-eslint/no-use-before-define": ["error"],
         "react/jsx-filename-extension": [ "warn", {"extensions": [".tsx"]} ],
         "import/extensions": [
@@ -37,8 +39,9 @@
             ],
         "no-shadow": "off",
         "@typescript-eslint/no-shadow": ["error"],
+        "@typescript-eslint/explicit-module-boundary-types": ["off"],
         "@typescript-eslint/explicit-function-return-type": [
-            "error",
+            "off",
             {
             "allowExpressions": true
             }

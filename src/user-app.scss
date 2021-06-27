@@ -10,15 +10,21 @@ body,html {
     padding:10px 40px;
 }
 
-@media only screen and (max-width: 600px) {
-    .app {
-        padding: 10px 10px;
-    }
-}
-
 .animate-button {
     transition: background .3s;
     &:hover{
        background: rgb(9, 194, 255);
+    }
+}
+
+.back-button {
+    margin-top: 20px;
+    height:30px;
+    width:80px;
+}
+
+@media only screen and (max-width: 600px) {
+    .app {
+        padding: 10px 10px;
     }
 }

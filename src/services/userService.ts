@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { IUser } from '../interfaces/IUser';
 import { User } from '../classes/User';
 
@@ -46,7 +45,8 @@ const userService = () => {
   const checkifListReady = () => {
     let reposAreSet = false;
     if (userList.length === 30) {
-      if (userList[userList.length - 1].firstThreeRepos.length > 0) {
+      const lastItem = userList[userList.length - 1];
+      if (lastItem.firstThreeRepos.length > 0 && lastItem.orgs.length > 0) {
         reposAreSet = true;
       }
     }

@@ -1,8 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable react/jsx-one-expression-per-line */
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { IUser } from '../../interfaces/IUser';
@@ -14,9 +9,8 @@ import './github-user.scss';
 
 const GithubUser = (
   {
-    name, login, type, orgUrl, followers, avatarUrl,
-    id, firstThreeRepos, reposUrl, orgs, fromSearch,
-  }:IUser,
+    name, login, type, avatarUrl, firstThreeRepos, orgs, fromSearch,
+  } : IUser,
 ) => (
   <div className="user user-list-view">
     <div className="img-container">
@@ -27,25 +21,27 @@ const GithubUser = (
         <Link to={`/${login}`}>{name || login}</Link>
       </h2>
       <p>
-        Type: {type}
+        Type:
+        {' '}
+        {type}
       </p>
     </div>
     <div className="repos">
       <h3>User repos</h3>
-      {firstThreeRepos.length > 0
+      {firstThreeRepos[0]
         ? firstThreeRepos.map((repo) => <Repo name={repo.name} url={repo.url} key={repo.id} />)
         : (<p>No repos to display</p>)}
     </div>
 
     <div className="orgs">
-      {fromSearch && orgs.length === 0
+      {fromSearch && !orgs[0]
         ? (
           <>
             <h3>User organisations</h3>
             <p> No organisations available</p>
           </>
         ) : (<></>)}
-      {orgs.length > 0 && fromSearch
+      {orgs[0] && fromSearch
         ? (
           <>
             <h3>User organisations</h3>

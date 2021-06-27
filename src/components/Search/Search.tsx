@@ -1,6 +1,3 @@
-/* eslint-disable no-alert */
-/* eslint-disable react/button-has-type */
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import dataService from '../../services/dataService';
@@ -14,6 +11,7 @@ const Search = () => {
   const [user, setUser] = useState('');
   const history = useHistory();
   const [searchlist, setSearchlist] = useState([]);
+  const keys = [233, 45, 13];
 
   useEffect(() => {
     if (lsService.listExists('searchlist')) {
@@ -43,14 +41,14 @@ const Search = () => {
     <div className="search-box">
       <div className="search">
         <input className="search-input" placeholder="search user from Github" onChange={(e) => handleChange(e)} />
-        <button onClick={() => handleSearch()}>Search</button>
+        <button type="button" onClick={() => handleSearch()}>Search</button>
       </div>
       {searchlist.length > 0
         ? (
           <div className="search-results">
             <h3>Last three searches:</h3>
             <div className="last-searches">
-              {searchlist.map((userlogin:string) => <SearchLink userlogin={userlogin} />)}
+              {searchlist.map((login:string, i) => <SearchLink login={login} key={keys[i]} />)}
             </div>
           </div>
         ) : (<></>)}
