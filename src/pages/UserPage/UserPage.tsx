@@ -29,7 +29,6 @@ const UserPage = () => {
       const newUser = userService.createUser(userDataObj.data);
       await repoService.setReposForUser(newUser);
       await orgService.getOrgs(newUser);
-      userService.addUser(newUser);
       lsService.addItemToLsList('userlist', newUser);
       setCurrentUser(newUser);
     } else {
